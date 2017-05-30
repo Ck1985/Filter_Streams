@@ -13,7 +13,7 @@ public class BufferedStreamCopier {
             System.err.println(ex);
         }
     }
-    private static void copy(InputStream input, OutputStream output) throws IOException {
+    public static void copy(InputStream input, OutputStream output) throws IOException {
         BufferedInputStream bin = new BufferedInputStream(input);
         BufferedOutputStream bout = new BufferedOutputStream(output);
         int datum = bin.read();
