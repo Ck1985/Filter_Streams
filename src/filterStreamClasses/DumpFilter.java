@@ -6,7 +6,7 @@ import java.io.*;
  * Created by anonymous.vn1985@gmail.com
  */
 public abstract class DumpFilter extends FilterInputStream {
-    private int[] buf = new int[0];
+    protected int[] buf = new int[0];
     private int index = 0;
 
     public DumpFilter(InputStream input) {
