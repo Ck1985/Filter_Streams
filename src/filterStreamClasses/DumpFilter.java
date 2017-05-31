@@ -29,7 +29,9 @@ public abstract class DumpFilter extends FilterInputStream {
         }
         return result;
     }
+
     protected abstract void fill() throws IOException;
+
     public int read(byte[] data, int offset, int len) throws IOException {
         if (data == null) {
             throw new NullPointerException();
@@ -53,7 +55,27 @@ public abstract class DumpFilter extends FilterInputStream {
         } catch (IOException ex){}
         return bytesRead;
     }
+
     public int available() throws IOException {
         return buf.length - index;
+    }
+
+    public long skip(long bytesToSkip) throws IOException {
+        long bytesSkipped = 0;
+        for ( ; bytesSkipped < bytesToSkip; bytesSkipped++) {
+            int c = this.read();
+            if (c == -1) break;
+        }
+        return bytesSkipped;
+    }
+
+    public void mark(int readLimit){}
+
+    public void reset() throws IOException {
+        throw new IOException("marking is not supported");
+    }
+
+    public boolean markSupported() {
+        return false;
     }
 }
