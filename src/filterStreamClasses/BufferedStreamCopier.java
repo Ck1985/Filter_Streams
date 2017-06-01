@@ -16,8 +16,9 @@ public class BufferedStreamCopier {
     public static void copy(InputStream input, OutputStream output) throws IOException {
         BufferedInputStream bin = new BufferedInputStream(input);
         BufferedOutputStream bout = new BufferedOutputStream(output);
-        int datum = bin.read();
+        int datum;
         while (true) {
+            datum = bin.read();
             if (datum == -1) break;
             bout.write(datum);
         }

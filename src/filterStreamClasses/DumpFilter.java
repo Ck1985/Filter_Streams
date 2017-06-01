@@ -7,7 +7,7 @@ import java.io.*;
  */
 public abstract class DumpFilter extends FilterInputStream {
     protected int[] buf = new int[0];
-    private int index = 0;
+    protected int index = 0;
 
     public DumpFilter(InputStream input) {
         super(input);
@@ -50,7 +50,7 @@ public abstract class DumpFilter extends FilterInputStream {
             for (; bytesRead < len; bytesRead++) {
                 datum = this.read();
                 if (datum == -1) break;
-                data[offset + len] = (byte)datum;
+                data[offset + bytesRead] = (byte)datum;
             }
         } catch (IOException ex){}
         return bytesRead;
