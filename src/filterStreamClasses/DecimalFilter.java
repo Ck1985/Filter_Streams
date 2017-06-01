@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * Created by anonymous.vn1985@gmail.com
  */
-public class DecimalFilter extends DumpFilter {
+class DecimalFilter extends DumpFilter {
 
     private int numRead = 0;
     private int breakAfter = 15;
