@@ -39,7 +39,7 @@ public class FileDumper_2 {
     public static void dump(InputStream in, OutputStream out, int mode) throws IOException {
 
         if (mode == ASC) ;
-        //else if (mode == HEX) in = new HexFilter(in);
+        else if (mode == HEX) in = new HexFilter(in);
         else if (mode == DEC) in = new DecimalFilter(in);
 
         BufferedStreamCopier.copy(in, out);
