@@ -24,8 +24,20 @@ public class DateFormatDemo {
         System.out.printf("localized month name: %tB/%TB", now, now);
         System.out.printf("localgized abbreviated month name %tb/%Tb\n",now,now);
         System.out.printf("localized abbreviated month name %th/%Th\n",now,now);
-        System.out.printf("localized day name %tA/%TA",now,now);
-        System.out.printf("localized abbreviated day %ta/%Ta",now,now);
-        System.out.printf("two digit century %tc/%tC", now, now);
+        System.out.printf("localized day name %tA/%TA\n",now,now);
+        System.out.printf("localized abbreviated day %ta/%Ta\n",now,now);
+        System.out.printf("two digit century %tc/%tC\n", now, now);
+        System.out.printf("Four digit year %tY/%TY\n", now, now);
+        System.out.printf("Two digit year %ty/%Ty\n", now, now);
+        System.out.printf("Three digit day of year %tj/%Tj\n", now, now);
+        System.out.printf("Two digit month %tm/%Tm\n", now, now);
+        System.out.printf("Two digit day of month %td/%Td\n", now, now);
+        System.out.printf("one or two digit day of month %te/%Te\n", now, now);
+        System.out.printf("hour and minute on 24 hour clock %tR/%TR\n", now, now);
+        System.out.printf("Hour minute and second on 24 hour clock %tT/%TT\n", now, now);
+        System.out.printf("Hour minute and second on 12 hour clock %tr/%Tr\n", now, now);
+        System.out.printf("month - day - year: %tD/%TD\n", now, now);
+        System.out.printf("ISO 8601 Standard date %tF/%TF\n", now, now);
+        System.out.printf("Unix date format %tc/%tC", now, now);
     }
 }
