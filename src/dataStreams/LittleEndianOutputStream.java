@@ -93,8 +93,22 @@ public class LittleEndianOutputStream extends FilterOutputStream {
          out.write((numBytes >>> 0) & 0xFF);
          for (int i = 0; i < numChars; i++) {
              c = s.charAt(i);
-             if ((c >= 0x0001) && (c <= 0x007F))
+             if ((c >= 0x0001) && (c <= 0x007F)) {
+                 out.write(c);
+             } else if (c > 0x07FF) {
+                 out.write(((0xE0) | ((c >> 12) & 0x0F)));
+                 out.write(((0x80) | ((c >> 6) & 0x3F)));
+                 out.write(((0x80) | (c & 0x3F)));
+                 written += 2;
+             } else {
+                 out.write((0xC0 | ((c >> 6) & 0x1F)));
+                 out.write((0x80) | (c & 0x3F));
+                 written +=1;
+             }
          }
+         written += numChars + 2;
     }
-
+    public int size() {
+        return this.written;
+    }
 }
