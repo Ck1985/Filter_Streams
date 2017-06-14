@@ -14,4 +14,26 @@ public class LittleEndianInputStream extends FilterInputStream {
         if (bool == -1) throw new EOFException();
         return (bool != 0);
     }
+    public byte readByte() throws IOException {
+        int ch = in.read();
+        if (ch < 0) throw new EOFException();
+        return (byte)ch;
+    }
+    public int readUnsignedByte() throws IOException {
+        int ch = in.read();
+        if (ch < 0) throw new EOFException();
+        return ch;
+    }
+    public short readShort() throws IOException {
+        int byte1 = in.read();
+        int byte2 = in.read();
+        if ((byte1 | byte2) < 0) throw new EOFException();
+        return (short) (((byte2 << 24) >>> 16) + ((byte1 << 24) >>> 24));
+    }
+    public int readUnsignedShort() throws IOException {
+        int byte1 = in.read();
+        int byte2 = in.read();
+        if ((byte1 | byte2) < 0) throw new EOFException();
+        return ((byte2 << 24) >> 16) + ((byte1 << 24) >> 24);
+    }
 }
