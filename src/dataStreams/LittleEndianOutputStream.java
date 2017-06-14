@@ -11,32 +11,39 @@ public class LittleEndianOutputStream extends FilterOutputStream {
     public LittleEndianOutputStream(OutputStream out) {
         super(out);
     }
+
     public void write(int b) throws IOException {
         out.write(b);
         this.written++;
     }
+
     public void write(byte[] b, int off, int len) throws IOException {
         out.write(b,off,len);
         this.written += len;
     }
+
     public void writeBoolean(boolean v) throws IOException {
         this.write(v ? 1 : 0);
         written++;
     }
+
     public void writeByte(int v) throws IOException {
         out.write(v);
         this.written++;
     }
+
     public void writeShort(int v) throws IOException {
         out.write((v >>> 0) & 0xFF);
         out.write((v >>> 8) & 0xFF);
         this.written += 2;
     }
+
     public void writeChar(int v) throws IOException {
         out.write((v >>> 0) & 0xFF);
         out.write((v >>> 8) & 0xFF);
         this.written += 2;
     }
+
     public void writeInt(int v) throws IOException {
         out.write((v >>> 0) & 0xFF);
         out.write((v >>> 8) & 0xFF);
@@ -44,6 +51,7 @@ public class LittleEndianOutputStream extends FilterOutputStream {
         out.write((v >>> 24) & 0xFF);
         this.written += 4;
     }
+
     public void writeLong(long v) throws IOException {
         out.write((int)(v >>> 0) & 0xFF);
         out.write((int)(v >>> 8) & 0xFF);
@@ -55,12 +63,15 @@ public class LittleEndianOutputStream extends FilterOutputStream {
         out.write((int)(v >>> 56) & 0xFF);
         this.written += 8;
     }
+
     public void writeFloat(float v) throws IOException {
         this.writeInt(Float.floatToIntBits(v));
     }
+
     public void writeDouble(double v) throws IOException {
         this.writeLong(Double.doubleToLongBits(v));
     }
+
     public void writeBytes(String s) throws IOException {
         int length = s.length();
         for (int i = 0; i < length; i++) {
@@ -68,6 +79,7 @@ public class LittleEndianOutputStream extends FilterOutputStream {
         }
         this.written += length;
     }
+
     public void writeChars(String s) throws IOException {
         int length = s.length();
         int n = 0;
@@ -78,6 +90,7 @@ public class LittleEndianOutputStream extends FilterOutputStream {
             this.written += 2;
         }
     }
+
     public void writeUTF(String  s) throws IOException {
         int numChars = s.length();
         int numBytes = 0;
@@ -108,6 +121,7 @@ public class LittleEndianOutputStream extends FilterOutputStream {
          }
          written += numChars + 2;
     }
+
     public int size() {
         return this.written;
     }
