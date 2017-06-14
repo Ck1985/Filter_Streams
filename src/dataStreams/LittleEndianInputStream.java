@@ -50,13 +50,19 @@ public class LittleEndianInputStream extends FilterInputStream {
     }
 
     public int readInt() throws IOException {
-        int byte1, byte2, byte3, byte4;
+        /*int byte1, byte2, byte3, byte4;
         synchronized(this) {
                     byte1 = in.read();
                     byte2 = in.read();
                     byte3 = in.read();
                     byte4 = in.read();
-        }
+        }*/
+        int
+                byte1 = in.read(),
+                byte2 = in.read(),
+                byte3 = in.read(),
+                byte4 = in.read();
+
         if (byte4 == -1) throw new EOFException();
         return (byte4 << 24) + ((byte3 << 24) >>> 8) + ((byte2 << 24) >>> 16) + ((byte1 << 24) >>> 24);
     }

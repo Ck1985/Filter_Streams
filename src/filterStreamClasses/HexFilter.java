@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * Created by anonymous.vn1985@gmail.com
  */
-class HexFilter extends DumpFilter {
+public class HexFilter extends DumpFilter {
     private int numsRead = 0;
     private int ratio = 3;
     private int breakAfter = 15;
