@@ -10,6 +10,13 @@ public class ShortFilter extends DataFilter {
         super(din);
     }
     protected void fill() throws IOException {
+        short sh = din.readShort();
+        String s = Short.toString(sh) + System.getProperty("line.separator", "\r\n");
+        byte[] b = s.getBytes("8859_1");
+        buf = new int[b.length];
+        for (int i = 0; i < b.length; i++) {
+            buf[i] = b[i];
+        }
 
     }
 }

@@ -38,7 +38,17 @@ public class FileDumper_3 {
         }
 
         for (int i = firstFile; i < args.length; i++) {
-
+            try {
+                FileInputStream input = new FileInputStream(args[i]);
+                dump(input, System.out, mode, bigEndian);
+                if (i < args.length - 1) {
+                    System.out.println();
+                    System.out.println("-------------------------------");
+                    System.out.println();
+                }
+            } catch (IOException ex) {
+                System.err.println(ex);
+            }
         }
     }
 
