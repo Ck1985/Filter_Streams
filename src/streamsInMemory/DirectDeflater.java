@@ -7,7 +7,7 @@ import java.util.zip.*;
  * Created by anonymous.vn1985@gmail.com
  */
 public class DirectDeflater  {
-    private final static String DEFLATE_SUFFIX = ".dfl";
+    public final static String DEFLATE_SUFFIX = ".dfl";
     public static void main(String[] args) throws IOException {
         Deflater def = new Deflater();
         byte[] input = new byte[1024];
